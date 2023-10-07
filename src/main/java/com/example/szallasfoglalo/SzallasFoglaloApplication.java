@@ -8,6 +8,7 @@ public class SzallasFoglaloApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SzallasFoglaloApplication.class, args);
+		System.out.println("Help");
 	}
 
 }
