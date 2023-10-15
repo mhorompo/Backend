@@ -8,12 +8,11 @@ import lombok.Setter;
 @Table
 @Getter
 @Setter
-public class BillingAddress {
-
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int postalCode;
-    private String streetName;
-    private int houseNumber;
+    private String name;
+    private String path;
+    private String type;
 }

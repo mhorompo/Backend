@@ -15,19 +15,8 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private int amount;
     private LocalDateTime date;
-
     private PaymentType paymentType;
 
-    public Payment() {
-    }
-
-    public Payment(int id, int amount, LocalDateTime date, PaymentType paymentType) {
-        this.id = id;
-        this.amount = amount;
-        this.date = date;
-        this.paymentType = paymentType;
-    }
 }
