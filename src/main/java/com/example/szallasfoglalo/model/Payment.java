@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Table
+@Table(name = "payment")
 public class Payment {
 
     @Id
@@ -17,6 +17,7 @@ public class Payment {
     private int id;
     private int amount;
     private LocalDateTime date;
+    @Enumerated
     private PaymentType paymentType;
 
 }

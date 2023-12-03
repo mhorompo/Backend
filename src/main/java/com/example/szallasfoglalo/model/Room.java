@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table
+@Table(name = "room")
 @Getter
 @Setter
 public class Room {
@@ -16,5 +16,6 @@ public class Room {
     private int price;
     private int capacity;
     private int roomNumber;
+    @Enumerated
     private roomType roomType;
 }

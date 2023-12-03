@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table
+@Table(name = "user")
 @Getter
 @Setter
-public class Customer {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,4 +16,5 @@ public class Customer {
     private String firstName;
     private String fastName;
     private String email;
+    private String password;
 }
