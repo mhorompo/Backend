@@ -1,6 +1,6 @@
 package com.example.szallasfoglalo.model;
 
-public enum roomType {
+public enum RoomType {
     FRANCIAAGYAS,
     EGYAGYAS,
     KETAGYAS

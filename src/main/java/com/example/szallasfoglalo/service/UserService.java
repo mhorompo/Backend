@@ -24,7 +24,7 @@ public class UserService {
 
         if (signupDto.getRoleEnum().equals(RoleEnum.USER.name())){
             user.setRoleEnum(RoleEnum.USER);
-        } else user.setRoleEnum(RoleEnum.ACCOMODATION);
+        } else user.setRoleEnum(RoleEnum.ACCOMMODATION);
 
         return userRepository.save(user);
     }
@@ -56,8 +56,17 @@ public class UserService {
 
         if (signupDto.getRoleEnum().equals(RoleEnum.USER.name())){
             user.setRoleEnum(RoleEnum.USER);
-        } else user.setRoleEnum(RoleEnum.ACCOMODATION);
+        } else user.setRoleEnum(RoleEnum.ACCOMMODATION);
 
         return userRepository.save(user);
+    }
+
+    public User getUserById(int userId) {
+        User user = this.userRepository.findById(userId).orElse(null);
+        if (user == null){
+            throw new NullPointerException();
+        }
+
+        return user;
     }
 }

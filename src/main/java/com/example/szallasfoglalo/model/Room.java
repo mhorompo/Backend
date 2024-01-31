@@ -17,5 +17,5 @@ public class Room {
     private int capacity;
     private int roomNumber;
     @Enumerated
-    private roomType roomType;
+    private RoomType roomType;
 }

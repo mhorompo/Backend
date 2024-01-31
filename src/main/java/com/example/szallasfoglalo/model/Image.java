@@ -12,7 +12,10 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String path;
-    private String type;
+
+    @ManyToOne
+    private Accommodation accommodation;
+    @Lob
+    @Column(name = "data", columnDefinition = "LONGBLOB")
+    private byte[] data;
 }
