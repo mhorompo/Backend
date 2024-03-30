@@ -22,21 +22,31 @@ public class ImageService {
 
     public Image uploadImage(MultipartFile file, int id) throws IOException {
         Image img = new Image();
-
         img.setAccommodation(this.accommodationService.getAccommodatonById(id));
         img.setData(file.getBytes());
         return imageRepository.save(img);
     }
 
-    public List<ImageDto> getImagesById(int id) {
-        List<Image> images = imageRepository.findImagesByAccommodationId(id);
-        List<ImageDto> convertedImage = new ArrayList<>();
-        for(Image image : images){
-            ImageDto dto = new ImageDto();
-            dto.setId(id);
-            dto.setData(Base64.getEncoder().encodeToString(image.getData()));
-            convertedImage.add(dto);
+    public List<ImageDto> getImageById(int id) {
+        Image images = imageRepository.findImageByAccommodationId(id);
+        return null;
+    }
+
+    public Image updateImage(MultipartFile file, int id) throws IOException {
+        Image img = imageRepository.findImageByAccommodationId(id);
+        if (img == null){
+            throw new NullPointerException();
         }
-        return convertedImage;
+
+        img.setData(file.getBytes());
+        return imageRepository.save(img);
+    }
+
+    public byte[] getImageData(int imageId) {
+        Image imageEntity = imageRepository.findImageByAccommodationId(imageId);
+        if (imageEntity != null) {
+            return imageEntity.getData();
+        }
+        return null;
     }
 }

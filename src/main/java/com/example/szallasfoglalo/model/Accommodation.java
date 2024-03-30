@@ -26,6 +26,12 @@ public class Accommodation {
     private String latitude;
     private String longitude;
     private int price;
+    private boolean freeParking;
+    private boolean freeWifi;
+    private boolean breakfastIncluded;
+    private boolean airConditioning;
+    private boolean reception;
+    private boolean barrierFree;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

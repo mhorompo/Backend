@@ -17,4 +17,10 @@ public class AccommodationDto {
     private String latitude;
     private int userId;
     private int price;
+    private boolean freeParking;
+    private boolean freeWifi;
+    private boolean breakfastIncluded;
+    private boolean airConditioning;
+    private boolean reception;
+    private boolean barrierFree;
 }

@@ -30,6 +30,12 @@ public class AccommodationService {
         acc.setName(accommodationDto.getName());
         acc.setPrice(accommodationDto.getPrice());
         acc.setUser(userRepository.findById(accommodationDto.getUserId()).orElse(null));
+        acc.setAirConditioning(accommodationDto.isAirConditioning());
+        acc.setFreeParking(accommodationDto.isFreeParking());
+        acc.setBarrierFree(accommodationDto.isBarrierFree());
+        acc.setBreakfastIncluded(accommodationDto.isBreakfastIncluded());
+        acc.setFreeWifi(accommodationDto.isFreeWifi());
+        acc.setReception(accommodationDto.isReception());
 
         return accommodationRepository.save(acc);
     }
@@ -58,6 +64,12 @@ public class AccommodationService {
         acc.setStreetName(data.getStreetName());
         acc.setZipCode(data.getZipCode());
         acc.setPrice(data.getPrice());
+        acc.setAirConditioning(data.isAirConditioning());
+        acc.setFreeParking(data.isFreeParking());
+        acc.setBarrierFree(data.isBarrierFree());
+        acc.setBreakfastIncluded(data.isBreakfastIncluded());
+        acc.setFreeWifi(data.isFreeWifi());
+        acc.setReception(data.isReception());
 
         return accommodationRepository.save(acc);
     }
