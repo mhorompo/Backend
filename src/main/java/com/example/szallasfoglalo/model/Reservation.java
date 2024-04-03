@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "reservation")
 @Getter
@@ -25,7 +23,8 @@ public class Reservation {
     @ManyToOne
     private Accommodation accommodation;
 
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private int totalPrice;
+    private String startDate;
+    private String endDate;
+    private int price;
+    private String transactionId;
 }

@@ -17,7 +17,6 @@ public class Payment {
     private int id;
     private int amount;
     private LocalDateTime date;
-    @Enumerated
-    private PaymentType paymentType;
-
+    @ManyToOne
+    private User user;
 }
