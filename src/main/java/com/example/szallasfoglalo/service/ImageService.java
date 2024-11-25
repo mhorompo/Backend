@@ -1,13 +1,13 @@
 package com.example.szallasfoglalo.service;
 
+import com.example.szallasfoglalo.exception.ImageException;
 import com.example.szallasfoglalo.model.Image;
 import com.example.szallasfoglalo.model.dto.ImageDto;
 import com.example.szallasfoglalo.repository.ImageRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -34,8 +34,8 @@ public class ImageService {
 
     public Image updateImage(MultipartFile file, int id) throws IOException {
         Image img = imageRepository.findImageByAccommodationId(id);
-        if (img == null){
-            throw new NullPointerException();
+        if (img == null) {
+            throw new ImageException("Image not Found");
         }
 
         img.setData(file.getBytes());

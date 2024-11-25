@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class SzallasFoglaloApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(SzallasFoglaloApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(SzallasFoglaloApplication.class, args);
     }
 }

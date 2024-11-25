@@ -1,5 +1,6 @@
 package com.example.szallasfoglalo.service;
 
+import com.example.szallasfoglalo.exception.AuthenticationException;
 import com.example.szallasfoglalo.model.RoleEnum;
 import com.example.szallasfoglalo.model.User;
 import com.example.szallasfoglalo.model.dto.LoginDto;
@@ -8,9 +9,11 @@ import com.example.szallasfoglalo.model.dto.UserUpdateDto;
 import com.example.szallasfoglalo.repository.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -23,7 +26,7 @@ public class UserService {
 
         user.setPassword(BCrypt.hashpw(signupDto.getPassword(), BCrypt.gensalt()));
 
-        if (signupDto.getRoleEnum().equals(RoleEnum.USER.name())){
+        if (signupDto.getRoleEnum().equals(RoleEnum.USER.name())) {
             user.setRoleEnum(RoleEnum.USER);
         } else user.setRoleEnum(RoleEnum.ACCOMMODATION);
 
@@ -32,12 +35,11 @@ public class UserService {
 
     public User login(LoginDto loginDto) {
         User user = userRepository.findByEmail(loginDto.getEmail()).orElse(null);
-        if (user == null){
-            throw new NullPointerException();
+        if (user == null) {
+            throw new AuthenticationException("Invalid Email address");
         }
-        if (!BCrypt.checkpw(loginDto.getPassword(), user.getPassword())){
-            //EXCEPTIONOK KELLENEK
-            throw new NullPointerException();
+        if (!BCrypt.checkpw(loginDto.getPassword(), user.getPassword())) {
+            throw new AuthenticationException("Invalid password");
         }
 
         return user;
@@ -45,16 +47,16 @@ public class UserService {
 
     public User update(UserUpdateDto userUpdateDto, int id) {
         User user = userRepository.findById(id).orElse(null);
-        if (user == null){
-            throw new NullPointerException();
+        if (user == null) {
+            throw new AuthenticationException("Invalid Email address");
         }
 
         user.setEmail(userUpdateDto.getEmail());
         user.setFirstName(userUpdateDto.getFirstName());
         user.setLastName(userUpdateDto.getLastName());
 
-        if (!BCrypt.checkpw(userUpdateDto.getOldPass(), user.getPassword())){
-            throw new RuntimeException();
+        if (!BCrypt.checkpw(userUpdateDto.getOldPass(), user.getPassword())) {
+            throw new AuthenticationException("Invalid password");
         }
 
         user.setPassword(BCrypt.hashpw(userUpdateDto.getPassword(), BCrypt.gensalt()));
@@ -64,8 +66,8 @@ public class UserService {
 
     public User getUserById(int userId) {
         User user = this.userRepository.findById(userId).orElse(null);
-        if (user == null){
-            throw new NullPointerException();
+        if (user == null) {
+            throw new AuthenticationException("Invalid Email address");
         }
 
         return user;

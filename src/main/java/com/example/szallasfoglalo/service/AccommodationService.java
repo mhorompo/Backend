@@ -14,6 +14,7 @@ public class AccommodationService {
 
     private final AccommodationRepository accommodationRepository;
     private final UserRepository userRepository;
+
     public AccommodationService(AccommodationRepository accommodationRepository, UserRepository userRepository) {
         this.accommodationRepository = accommodationRepository;
         this.userRepository = userRepository;
@@ -44,18 +45,21 @@ public class AccommodationService {
         return accommodationRepository.findAll();
     }
 
-    public Accommodation getAccommodatonById(int id){
+    public Accommodation getAccommodatonById(int id) {
         return accommodationRepository.findById(id).orElse(null);
     }
 
-    public List<Accommodation> getAccommodationsByUserId(int id){return accommodationRepository.findByUserId(id);}
+    public List<Accommodation> getAccommodationsByUserId(int id) {
+        return accommodationRepository.findByUserId(id);
+    }
 
     public Accommodation updateAccommodation(AccommodationDto data, int id) {
-        Accommodation acc = accommodationRepository.findById(id).orElse(null);
-        if (acc == null){
-            throw new NullPointerException();
-        }
 
+        Accommodation acc = accommodationRepository.findById(id).orElse(null);
+
+        if (acc == null)
+            throw new NoSuchElementException("Cannot find Accommodation" + id);
+        
         acc.setCity(data.getCity());
         acc.setDescription(data.getDescription());
         acc.setName(data.getName());

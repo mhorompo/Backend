@@ -18,17 +18,17 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public User regist(@RequestBody SignupDto signupDto){
+    public User regist(@RequestBody SignupDto signupDto) {
         return userService.regist(signupDto);
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody LoginDto loginDto){
+    public User login(@RequestBody LoginDto loginDto) {
         return userService.login(loginDto);
     }
 
     @PutMapping("/update/{id}")
-    public User update(@RequestBody UserUpdateDto userUpdateDto, @PathVariable int id){
+    public User update(@RequestBody UserUpdateDto userUpdateDto, @PathVariable int id) {
         return userService.update(userUpdateDto, id);
     }
 }

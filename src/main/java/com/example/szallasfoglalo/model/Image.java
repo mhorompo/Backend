@@ -15,6 +15,7 @@ public class Image {
 
     @ManyToOne
     private Accommodation accommodation;
+    
     @Lob
     @Column(name = "data", columnDefinition = "LONGBLOB")
     private byte[] data;

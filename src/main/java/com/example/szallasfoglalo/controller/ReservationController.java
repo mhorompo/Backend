@@ -20,12 +20,12 @@ public class ReservationController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/reserveAccommodation/{userId}/{accommodationId}")
-    public Reservation reserveAccommodation(@PathVariable int userId, @PathVariable int accommodationId, @RequestBody ReservationDto data){
+    public Reservation reserveAccommodation(@PathVariable int userId, @PathVariable int accommodationId, @RequestBody ReservationDto data) {
         return this.reservationService.newReservation(userId, accommodationId, data);
     }
 
     @GetMapping("/getAllReservationsById/{id}")
-    public List<Reservation> getAllReservationsById(@PathVariable int id){
+    public List<Reservation> getAllReservationsById(@PathVariable int id) {
         return this.reservationService.getAllReservationsById(id);
     }
 }
