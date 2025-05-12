@@ -22,7 +22,7 @@ public class ImageService {
 
     public Image uploadImage(MultipartFile file, int id) throws IOException {
         Image img = new Image();
-        img.setAccommodation(this.accommodationService.getAccommodatonById(id));
+        img.setAccommodation(this.accommodationService.getAccommodationById(id));
         img.setData(file.getBytes());
         return imageRepository.save(img);
     }

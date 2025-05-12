@@ -19,6 +19,12 @@ public class UserService {
     }
 
     public User regist(SignupDto signupDto) {
+        if (signupDto == null)
+            throw new AuthenticationException("Data is missing");
+
+        if (userRepository.existsByEmail(signupDto.getEmail()))
+            throw new AuthenticationException("Email already in use");
+
         User user = new User();
         user.setEmail(signupDto.getEmail());
         user.setFirstName(signupDto.getFirstName());

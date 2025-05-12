@@ -45,7 +45,7 @@ public class AccommodationService {
         return accommodationRepository.findAll();
     }
 
-    public Accommodation getAccommodatonById(int id) {
+    public Accommodation getAccommodationById(int id) {
         return accommodationRepository.findById(id).orElse(null);
     }
 
@@ -59,7 +59,7 @@ public class AccommodationService {
 
         if (acc == null)
             throw new NoSuchElementException("Cannot find Accommodation" + id);
-        
+
         acc.setCity(data.getCity());
         acc.setDescription(data.getDescription());
         acc.setName(data.getName());
@@ -80,10 +80,9 @@ public class AccommodationService {
 
     public void deleteAccommodationById(int id) {
         // Ellenőrzés, hogy az adott ID-vel rendelkező szállás létezik-e
-        if (accommodationRepository.existsById(id)) {
+        if (accommodationRepository.existsById(id))
             accommodationRepository.deleteById(id);
-        } else {
+        else
             throw new NoSuchElementException("Cannot find accommodation: " + id);
-        }
     }
 }

@@ -7,8 +7,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class ReservationDto {
-    private String startDate;
-    private String endDate;
+public class PaymentDto {
+    private String date;
     private int price;
 }

@@ -31,7 +31,7 @@ public class AccommodationController {
 
     @GetMapping("/getAcc/{id}")
     public Accommodation getAcc(@PathVariable int id) {
-        return accommodationService.getAccommodatonById(id);
+        return accommodationService.getAccommodationById(id);
     }
 
     @GetMapping("/getAllAccommodationByUserId/{id}")

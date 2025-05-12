@@ -17,7 +17,7 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final UserRepository userRepository;
 
-    public ReservationService(AccommodationService accommodationService, AccommodationRepository accommodationRepository, ReservationRepository reservationRepository, UserService userService, UserRepository userRepository) {
+    public ReservationService(AccommodationRepository accommodationRepository, ReservationRepository reservationRepository, UserRepository userRepository) {
         this.accommodationRepository = accommodationRepository;
         this.reservationRepository = reservationRepository;
         this.userRepository = userRepository;
@@ -34,9 +34,8 @@ public class ReservationService {
         reservation.setStartDate(data.getStartDate());
         reservation.setEndDate(data.getEndDate());
         reservation.setPrice(data.getPrice());
-        reservation.setTransactionId(data.getTransactionId());
 
-        return reservationRepository.save(reservation);
+        return this.reservationRepository.save(reservation);
     }
 
     public List<Reservation> getAllReservationsById(int id) {

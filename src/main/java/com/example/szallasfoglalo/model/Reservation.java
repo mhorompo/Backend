@@ -16,15 +16,12 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @ManyToOne
     private User user;
-
     @ManyToOne
     private Accommodation accommodation;
-
     private String startDate;
     private String endDate;
     private int price;
-    private String transactionId;
+    private String reservationId;
 }
